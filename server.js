@@ -5,7 +5,8 @@ const port = process.env.PORT || 3000;
 const { MONGO_DB_USR, MONGO_DB_PWD, MONGO_DB_HOST, MONGO_DB_PORT } =
   process.env;
 const credentials = MONGO_DB_USR ? `${MONGO_DB_USR}:${MONGO_DB_PWD}@` : "";
-const mongoURI = `mongodb://${credentials}${MONGO_DB_HOST}:${MONGO_DB_PORT}/`;
+const mongoURI = `mongodb+srv://${credentials}${MONGO_DB_HOST}:${MONGO_DB_PORT}/tareaDevops`;
+
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
