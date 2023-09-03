@@ -19,8 +19,12 @@ if (cluster.isMaster) {
 } else {
   // Si es un trabajador, inicia tu aplicación aquí
 
-  // Configura la conexión a MongoDB
-  const mongoURI = 'mongodb+srv://juanalejandroe1:11588264@cluster0.taz3tow.mongodb.net/tareaDevops'; // Actualiza con tus propios datos de conexión
+  const { MONGO_DB_USR, MONGO_DB_PWD, MONGO_DB_HOST, MONGO_DB_PORT } =
+  process.env;
+const credentials = MONGO_DB_USR ? `${MONGO_DB_USR}:${MONGO_DB_PWD}@` : "";
+const mongoURI = `mongodb+srv://${credentials}${MONGO_DB_HOST}/tareaDevops`;
+
+// Actualiza con tus propios datos de conexión
   mongoose
     .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
